@@ -1,6 +1,7 @@
 MYENV=mdenv
 MYENV_DIR=~/.$MYENV
 TMUX_DIR=~/.tmux
+DEBUG=$( false)
 
 function debug_on() {
     set -x
@@ -11,22 +12,25 @@ function debug_off() {
 }
 
 function d_exec() {
-    debug_on
+    $DEBUG && debug_on
     $@
-    debug_off
+    $DBEUG && debug_off
 }
 
 function update_vimrc() {
+    log_output 'Updating vimrc'
     update_homedir .vimrc 
 }
 
 
 
 function update_git() {
+    log_output 'Updating gitconfig'
     update_homedir .gitconfig
 }
 
 function update_tmux() {
+    log_output 'Updating tmux...'
     # if it doesn't exist...
     [[ ! -d $TMUX_DIR ]] && mkdir $TMUX_DIR
 
@@ -50,4 +54,8 @@ function update_homedir() {
 
     DSTFILE=~/$FNAME
     cp $SRCFILE $DSTFILE
+}
+
+function log_output() {
+    printf "UPDATE:%s\n" "$@"
 }
