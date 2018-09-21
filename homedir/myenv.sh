@@ -1,1 +1,1 @@
-docs/myenv.sh
+../docs/myenv.sh
