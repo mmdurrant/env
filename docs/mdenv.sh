@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 MYENV=mdenv
 MYENV_DIR=~/.$MYENV
 
