@@ -1,8 +1,11 @@
 #! /bin/bash
 MYENV=mdenv
-MYENV_DIR=.$MYENV
-git clone https://github.com/mmdurrant/env ~/$MYENV_DIR
-cat ~/MYENV_DIR/.vimrc | tee -a ~/.vimrc
-mv ~/$MYENV_DIR/tmux/ ~
-mv ~/tmux/.tmux.conf ~
-rm -rf ~/$MYENV_DIR
+MYENV_DIR=~/.$MYENV
+
+[[ -d $MYENV_DIR ]] && rm -rf $MYENV_DIR
+git clone https://github.com/mmdurrant/env $MYENV_DIR
+[[ -s $MYENV_DIR/homedir/env.sh ]] && (source $MYENV_DIR/homedir/env.sh || exit 1)
+
+update_all
+
+rm -rf $MYENV_DIR
