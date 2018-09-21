@@ -1,12 +1,16 @@
 set number
-"" filetype plugin indent on
-" show existing tab with 4 spaces width
-" set tabstop=4
-" when indenting with '>', use 4 spaces width
-" set shiftwidth=4
-" On pressing tab, insert 4 spaces
-" set expandtab
+filetype plugin indent on
 set tabstop=4
 set expandtab
 set shiftwidth=4
 set softtabstop=4
+set smarttab
+
+" disable backup
+set nobackup
+set nowb
+set noswapfile
+
+" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
+map <space> /
+map <c-space> ?
